@@ -18,6 +18,11 @@ function calculate() {
         matrixInput.appendChild(document.createElement('br'));
     }
 
+    // Disable matrix input fields
+    document.querySelectorAll('.matrix-input input').forEach(input => {
+        input.disabled = true;
+    });
+
     // Perform Gaussian Elimination Back Substitution calculation
     const matrix = [];
     for (let i = 0; i < rows; i++) {
