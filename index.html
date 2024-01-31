@@ -1,31 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Gauss Elimination</title>
+    <title>Gauss Elimination Calculator</title>
 </head>
+
 <body>
     <div class="container">
-        <h1>Gauss Elimination App</h1>
-        <p>
-            Metode eliminasi Gauss adalah teknik dalam aljabar linier untuk menyelesaikan sistem persamaan linear.
-            Setelah matriks augmented dibentuk, langkah-langkah eliminasi Gauss dan substansi mundur diterapkan untuk mendapatkan solusi.
-        </p>
-        <p>Enter the matrix size:</p>
-        <input type="number" id="matrixSize" placeholder="Enter size">
-        <p>
-            Masukkan matriks augmented di bawah ini dan klik tombol "Hitung" untuk mendapatkan solusi:
-        </p>
-        <textarea id="inputMatrix" rows="4" cols="30" placeholder="Contoh:\n2 1 -1 8\n-3 -1 2 -11\n-2 1 2 -3"></textarea>
-        <button onclick="solveGauss()">Hitung</button>
-        <p id="result"></p>
-        <div class="animation"></div>
-        <p>
-            <strong>Tutorial:</strong> Masukkan matriks augmented pada textarea, klik tombol "Hitung", dan aplikasi akan menampilkan solusi.
-        </p>
+        <h1>Gauss Elimination Calculator</h1>
+        
+        <div class="matrix-options">
+            <input type="radio" name="matrixOption" value="1" checked> Matrix 1
+            <input type="radio" name="matrixOption" value="2"> Matrix 2
+            <input type="radio" name="matrixOption" value="3"> Matrix 3
+        </div>
+
+        <div class="matrix-input">
+            <p>Enter the matrix:</p>
+            <textarea id="inputMatrix" rows="5" cols="30"></textarea>
+        </div>
+
+        <button onclick="calculateGauss()">Calculate</button>
+
+        <div id="result" class="result"></div>
+
+        <div class="tutorial">
+            <h2>How to use:</h2>
+            <p>1. Select the matrix.</p>
+            <p>2. Enter the matrix values in the textarea.</p>
+            <p>3. Click the "Calculate" button.</p>
+            <p>4. View the result.</p>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>
