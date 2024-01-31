@@ -9,19 +9,25 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
+            color: #fff;
         }
 
         #container {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        h1 {
+            text-align: center;
+            color: #3498db;
         }
 
         label {
@@ -30,35 +36,41 @@
         }
 
         input {
-            width: 100%;
+            width: calc(100% - 16px);
             padding: 8px;
             margin-bottom: 16px;
             box-sizing: border-box;
         }
 
         button {
-            background-color: #4caf50;
+            background-color: #2ecc71;
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #27ae60;
         }
 
         #output {
             margin-top: 20px;
             font-size: 18px;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
 </head>
 <body>
     <div id="container">
-        <h1 style="text-align: center;">Gauss Elimination</h1>
+        <h1>Gauss Elimination</h1>
 
         <label for="matrixSize">Enter the size of the matrix:</label>
         <input type="number" id="matrixSize" name="matrixSize" required>
