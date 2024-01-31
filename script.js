@@ -1,10 +1,30 @@
-function calculateGauss() {
-    const matrixOption = document.querySelector('input[name="matrixOption"]:checked').value;
-    const inputMatrix = document.getElementById('inputMatrix').value;
+function generateMatrix() {
+    const matrixSize = parseInt(document.getElementById("matrix-size").value);
 
-    // Add your Gauss elimination logic here
+    if (isNaN(matrixSize) || matrixSize < 2) {
+        alert("Please enter a valid matrix size (minimum 2).");
+        return;
+    }
 
-    // Example: Display the result in the result div
-    const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = `<p>Result for Matrix ${matrixOption}:</p><p>Your result goes here</p>`;
+    const matrixContainer = document.getElementById("matrix-container");
+    matrixContainer.innerHTML = "";
+
+    for (let i = 1; i <= matrixSize; i++) {
+        for (let j = 1; j <= matrixSize; j++) {
+            const input = document.createElement("input");
+            input.type = "number";
+            input.placeholder = `Enter A[${i}][${j}]`;
+            input.id = `A${i}_${j}`;
+            matrixContainer.appendChild(input);
+        }
+        const breakLine = document.createElement("br");
+        matrixContainer.appendChild(breakLine);
+    }
+}
+
+function calculate() {
+    // Implement Gauss Elimination with Back Substitution
+    // Retrieve values from the input fields, perform the calculations, and display the result
+    const resultContainer = document.getElementById("result-container");
+    resultContainer.innerHTML = "Result will be displayed here";
 }
