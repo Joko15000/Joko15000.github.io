@@ -54,6 +54,46 @@
             var outputDiv = document.getElementById('output');
             outputDiv.innerHTML = 'Result will be displayed here.';
         }
+
+        function calculate() {
+    var matrixSize = parseInt(document.getElementById('matrixSize').value);
+    var matrix = [];
+
+    // Retrieve values from input fields and populate the matrix
+    for (var i = 1; i <= matrixSize; i++) {
+        matrix[i] = [];
+        for (var j = 1; j <= matrixSize + 1; j++) {
+            matrix[i][j] = parseFloat(document.getElementsByName('matrix' + i + j)[0].value);
+        }
+    }
+
+    // Perform Gauss Elimination
+    for (var k = 1; k <= matrixSize - 1; k++) {
+        for (var i = k + 1; i <= matrixSize; i++) {
+            var factor = matrix[i][k] / matrix[k][k];
+            for (var j = k; j <= matrixSize + 1; j++) {
+                matrix[i][j] -= factor * matrix[k][j];
+            }
+        }
+    }
+
+    // Back Substitution
+    var x = [];
+    for (var i = matrixSize; i >= 1; i--) {
+        x[i] = matrix[i][matrixSize + 1] / matrix[i][i];
+        for (var j = i - 1; j >= 1; j--) {
+            matrix[j][matrixSize + 1] -= matrix[j][i] * x[i];
+        }
+    }
+
+    // Display the result
+    var outputDiv = document.getElementById('output');
+    outputDiv.innerHTML = '<h2>Solution:</h2>';
+    for (var i = 1; i <= matrixSize; i++) {
+        outputDiv.innerHTML += 'X[' + i + '] = ' + x[i] + '<br>';
+    }
+}
+
     </script>
 </body>
 </html>
