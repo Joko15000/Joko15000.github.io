@@ -1,34 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gauss Elimination Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <title>Gaussian Elimination Calculator</title>
 </head>
-
 <body>
     <div class="container">
-        <h1>Gauss Elimination Calculator</h1>
-        <div id="matrix-input">
-            <label for="matrix-size">Matrix Size:</label>
-            <input type="number" id="matrix-size" min="2" placeholder="Enter matrix size">
-            <button onclick="generateMatrix()">Generate Matrix</button>
+        <h1>Gaussian Elimination Calculator</h1>
+        <p>
+            Gauss Elimination Back Substitution method is a numerical method used to solve a system of linear equations. Enter the coefficients of the equations below:
+        </p>
+        <div class="matrix-input">
+            <!-- Matrix input fields will be dynamically generated using JavaScript -->
         </div>
-
-        <div id="matrix-container">
-            <!-- Matrix will be dynamically generated here -->
-        </div>
-
         <button onclick="calculate()">Calculate</button>
-
-        <div id="result-container">
-            <!-- Result will be displayed here -->
+        <div id="result" class="result"></div>
+        <div class="tutorial">
+            <!-- Tutorial content will be dynamically generated using JavaScript -->
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
-
 </html>
