@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gauss Elimination Back Substitution</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gauss Elimination Back Substitution</h1>
+
+    <form id="inputForm">
+        <label for="matrixSize">Enter the size of the matrix:</label>
+        <input type="number" id="matrixSize" name="matrixSize" required>
+        <button type="button" onclick="createMatrix()">Generate Matrix</button>
+
+        <div id="matrixInputs"></div>
+
+        <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+
+    <div id="output"></div>
+
+    <script>
+        function createMatrix() {
+            var matrixSize = parseInt(document.getElementById('matrixSize').value);
+            var matrixInputsDiv = document.getElementById('matrixInputs');
+            matrixInputsDiv.innerHTML = '';
+
+            for (var i = 1; i <= matrixSize; i++) {
+                for (var j = 1; j <= matrixSize + 1; j++) {
+                    var input = document.createElement('input');
+                    input.type = 'number';
+                    input.name = 'matrix' + i + j;
+                    input.placeholder = 'Enter value for A[' + i + '][' + j + ']';
+                    matrixInputsDiv.appendChild(input);
+                }
+                matrixInputsDiv.appendChild(document.createElement('br'));
+            }
+        }
+
+        function calculate() {
+            // Implement your Gauss Elimination Back Substitution logic here
+            // Retrieve values from input fields, perform calculations, and display the result
+            var outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = 'Result will be displayed here.';
+        }
+    </script>
+</body>
+</html>
