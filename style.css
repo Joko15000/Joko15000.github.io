@@ -1,43 +1,44 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f2f2f2;
+    background-color: #f5f5f5;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding: 0;
 }
 
 .container {
-    text-align: center;
-    background-color: white;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#matrix-input {
-    margin-bottom: 20px;
+h1 {
+    text-align: center;
+    color: #333;
 }
 
-#matrix-container {
+.matrix-input {
     margin-bottom: 20px;
 }
 
 button {
+    display: block;
+    width: 100%;
     padding: 10px;
     background-color: #4caf50;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #45a049;
+.result {
+    margin-top: 20px;
 }
 
-#result-container {
-    font-weight: bold;
-    font-size: 18px;
+.tutorial {
+    margin-top: 20px;
+    color: #666;
 }
