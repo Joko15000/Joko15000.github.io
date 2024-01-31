@@ -4,35 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Gauss Elimination Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="container">
         <h1>Gauss Elimination Calculator</h1>
-        
-        <div class="matrix-options">
-            <input type="radio" name="matrixOption" value="1" checked> Matrix 1
-            <input type="radio" name="matrixOption" value="2"> Matrix 2
-            <input type="radio" name="matrixOption" value="3"> Matrix 3
+        <div id="matrix-input">
+            <label for="matrix-size">Matrix Size:</label>
+            <input type="number" id="matrix-size" min="2" placeholder="Enter matrix size">
+            <button onclick="generateMatrix()">Generate Matrix</button>
         </div>
 
-        <div class="matrix-input">
-            <p>Enter the matrix:</p>
-            <textarea id="inputMatrix" rows="5" cols="30"></textarea>
+        <div id="matrix-container">
+            <!-- Matrix will be dynamically generated here -->
         </div>
 
-        <button onclick="calculateGauss()">Calculate</button>
+        <button onclick="calculate()">Calculate</button>
 
-        <div id="result" class="result"></div>
-
-        <div class="tutorial">
-            <h2>How to use:</h2>
-            <p>1. Select the matrix.</p>
-            <p>2. Enter the matrix values in the textarea.</p>
-            <p>3. Click the "Calculate" button.</p>
-            <p>4. View the result.</p>
+        <div id="result-container">
+            <!-- Result will be displayed here -->
         </div>
     </div>
 
