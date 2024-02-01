@@ -3,24 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Gaussian Elimination Calculator</title>
+    <title>Gauss Elimination Back Substitution</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        #error {
+            color: #ff0000;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Gaussian Elimination Calculator</h1>
-        <p>
-            Gauss Elimination Back Substitution method is a numerical method used to solve a system of linear equations. Enter the coefficients of the equations below:
-        </p>
-        <div class="matrix-input">
-            <!-- Matrix input fields will be dynamically generated using JavaScript -->
+    <div class="calculator">
+        <h1>Gauss Elimination Back Substitution</h1>
+        <div id="explanation">
+            <h2>Penjelasan Gauss Elimination Back Substitution method</h2>
+            <p>
+                Metode eliminasi Gauss adalah metode matematika yang digunakan untuk menyelesaikan sistem persamaan linear.
+                Back substitution adalah langkah terakhir dari metode eliminasi Gauss untuk menemukan solusi sistem persamaan linear.
+            </p>
         </div>
-        <button onclick="calculate()">Calculate</button>
-        <div id="result" class="result"></div>
-        <div class="tutorial">
-            <!-- Tutorial content will be dynamically generated using JavaScript -->
+        <div id="usage">
+            <h2>Cara Penggunaan Aplikasi</h2>
+            <p>
+                Masukkan matriks koefisien dan hasilnya ke dalam textarea. Pisahkan setiap elemen dengan koma, dan setiap baris dengan baris baru.
+                Contoh:
+                <br>
+                1, 2, 3, 4
+                <br>
+                5, 6, 7, 8
+                <br>
+                9, 10, 11, 12
+            </p>
+        </div>
+        <div id="calculator">
+            <h2>Kalkulator</h2>
+            <label for="matrixInput">Masukkan matriks (pisahkan dengan koma dan baris baru):</label>
+            <textarea id="matrixInput" rows="4" cols="50"></textarea>
+            <button onclick="calculate()">Hitung</button>
+            <p id="result">Hasil: <span id="resultValue"></span></p>
+            <p id="error"></p>
+            <p><h2>Dirancang Oleh Joko Arianto</h2></p>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        function calculate() {
+            let inputMatrix = document.getElementById('matrixInput').value.trim();
+
+            if (inputMatrix === '') {
+                showError('Masukkan matriks terlebih dahulu!');
+                return;
+            }
+
+            let matrix = parseMatrix(inputMatrix);
+            let result = gaussElimination(matrix);
+
+            if (result) {
+                showResult(result);
+            } else {
+                showError('Matriks singular atau tidak ada solusi unik.');
+            }
+        }
+
+        function parseMatrix(input) {
+            let rows = input.split('\n');
+            let matrix = rows.map(row => row.split(',').map(Number));
+
+            return matrix;
+        }
+
+        function gaussElimination(matrix) {
+            let n = matrix.length;
+
+            for (let i = 0; i < n - 1; i++) {
+                for (let k = i + 1; k < n; k++) {
+                    let factor = matrix[k][i] / matrix[i][i];
+
+                    for (let j = i; j < n + 1; j++) {
+                        matrix[k][j] -= factor * matrix[i][j];
+                    }
+                }
+            }
+
+            let result = new Array(n);
+            for (let i = n - 1; i >= 0; i--) {
+                if (matrix[i][i] === 0) {
+                    // Matriks singular
+                    return null;
+                }
+
+                result[i] = matrix[i][n] / matrix[i][i];
+                for (let k = i - 1; k >= 0; k--) {
+                    matrix[k][n] -= matrix[k][i] * result[i];
+                }
+            }
+
+            return result;
+        }
+
+        function showResult(result) {
+            document.getElementById('resultValue').innerText = result.join(', ');
+            document.getElementById('error').innerText = '';
+        }
+
+        function showError(message) {
+            document.getElementById('resultValue').innerText = '';
+            document.getElementById('error').innerText = message;
+        }
+    </script>
+    
 </body>
 </html>
